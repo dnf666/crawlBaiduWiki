@@ -18,8 +18,9 @@ class UrlManager(object):
             self.add_new_url(url)
 
     def has_new_url(self):
-        pass
+        return len(self.new_urls) != 0
 
     def get_new_url(self):
-        pass
-
+        new_url = self.new_urls.pop()
+        self.old_urls.add(new_url)
+        return new_url

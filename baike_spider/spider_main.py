@@ -15,7 +15,6 @@ class SpiderMain(object):
         self.outputer = html_outputer.HtmlOutputer()
 
     def craw(self, root_url):
-        pass
         count = 1
         # 添加单个url
         self.urls.add_new_url(root_url)
@@ -27,7 +26,7 @@ class SpiderMain(object):
                 html_con = self.downloader.downloader(new_url)
                 # 解析下载下来的正文，得到数据和相关的url
                 new_urls, new_data = self.parser.parse(new_url, html_con)
-                print 'craw %d : %s' % (count, new_url)
+                print('craw %d : %s' % (count, new_url))
                 # 将相关的url加入url管理器
                 self.urls.add_new_urls(new_urls)
                 # 将数据收集起来
@@ -42,7 +41,7 @@ class SpiderMain(object):
         self.outputer.output_html()
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     root_url = "https://baike.baidu.com/item/Python/407313"
     obj_spider = SpiderMain()
     obj_spider.craw(root_url)
